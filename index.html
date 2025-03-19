@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <title>实时工资计算器</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <style>
+    :root {
+      --gold: #FFD700;
+      --bg-gradient: linear-gradient(45deg, #1a1a1a, #2c3e50);
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg-gradient);
+      min-height: 100vh;
+      color: white;
+      font-family: 'Arial', sans-serif;
+    }
+
+    .dashboard {
+      padding: 2rem;
+      background: rgba(0,0,0,0.7);
+      border-radius: 15px;
+      box-shadow: 0 0 30px rgba(255,215,0,0.3);
+    }
+
+    h1 {
+      position: relative;
+      font-size: 3em;
+      background: linear-gradient(45deg, #FFD700 25%, #FFA500 75%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0 0 15px rgba(255,215,0,0.5);
+      animation: glow 2s ease-in-out infinite alternate;
+    }
+
+    @keyframes glow {
+      from {
+        filter: drop-shadow(0 0 5px #FFD700);
+      }
+      to {
+        filter: drop-shadow(0 0 20px #FFA500);
+      }
+    }
+
+    .coin {
+      width: 30px;
+      height: 30px;
+      background: radial-gradient(circle at 30% 30%, var(--gold), #daa520);
+      border-radius: 50%;
+      position: absolute;
+    }
+
+    #animation-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="dashboard">
+    <input type="number" id="monthlySalary" placeholder="月薪（元）">
+    <input type="time" id="startTime" value="09:00">
+    <input type="time" id="endTime" value="18:00">
+    <input type="number" id="workDays" placeholder="工作天数" value="22">
+    <h1 id="earnings">0.00 元</h1>
+  </div>
+  <div id="animation-container"></div>
+  <script src="salary.js"></script>
+</body>
+</html>
